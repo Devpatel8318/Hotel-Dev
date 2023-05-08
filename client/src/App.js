@@ -12,7 +12,7 @@ import SinglePlace from "./pages/SinglePlace";
 import BookingsPage from "./pages/BookingsPage";
 // import SingleBookingPage from "./pages/SingleBookingPage";
 
-axios.defaults.baseURL = "https://hotel-dev-project-devpatel8318.vercel.app/";
+axios.defaults.baseURL = "https://hotel-dev-project-devpatel8318.vercel.app/api";
 function App() {
 
   return (
