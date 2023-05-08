@@ -31,9 +31,6 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(bodyParser.text({ type: 'text/*' }));
 app.use(express.static(__dirname));
 
-app.get("/*", function(req, res) {
-  res.sendFile(path.join(__dirname, "server.html"));
-});
 
 
 //Mongodb Connection
