@@ -49,7 +49,7 @@ connectDB();
 
 
 
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     try {
         connectDB();
 
@@ -66,7 +66,7 @@ app.post('/register', async (req, res) => {
     }
 })
 
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     try {
         connectDB();
 
@@ -91,7 +91,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/profile', (req, res) => {
+app.get('/api/profile', (req, res) => {
     try {
 
         connectDB();
@@ -115,7 +115,7 @@ app.get('/profile', (req, res) => {
 })
 
 
-app.post('/logout', (req, res) => {
+app.post('/api/logout', (req, res) => {
     try {
         res.cookie('token', "", { httpOnly: false, secure: true, sameSite: "none", domain: "localhost", expires: new Date(Date.now() + 15 * 60 * 1000) }).json("deleted");
     }
@@ -142,7 +142,7 @@ async function downloadImage(imageUrl) {
     }
 }
 
-app.post('/uploadByLink', async (req, res) => {
+app.post('/api/uploadByLink', async (req, res) => {
     const { link: imageUrl } = req.body;
     try {
         const parsedUrl = url.parse(imageUrl);
@@ -172,7 +172,7 @@ app.post('/uploadByLink', async (req, res) => {
 
 
 
-app.post('/places', (req, res) => {
+app.post('/api/places', (req, res) => {
     const { token } = req.cookies;
     try {
 
@@ -208,7 +208,7 @@ app.post('/places', (req, res) => {
 
 })
 
-app.get('/userplaces', (req, res) => {
+app.get('/api/userplaces', (req, res) => {
     try {
         connectDB();
         const { token } = req.cookies;
@@ -226,7 +226,7 @@ app.get('/userplaces', (req, res) => {
     }
 })
 
-app.get('/places/:id', async (req, res) => {
+app.get('/api/places/:id', async (req, res) => {
     try {
         connectDB();
         const { id } = req.params;
@@ -238,7 +238,7 @@ app.get('/places/:id', async (req, res) => {
 });
 
 
-app.put('/places', async (req, res) => {
+app.put('/api/places', async (req, res) => {
     try {
         connectDB();
         const { token } = req.cookies;
@@ -280,7 +280,7 @@ app.put('/places', async (req, res) => {
 
 
 //index page
-app.get('/places', async (req, res) => {
+app.get('/api/places', async (req, res) => {
     try {
         connectDB();
         res.json(await Place.find());
@@ -294,7 +294,7 @@ app.get('/places', async (req, res) => {
 
 
 
-app.post('/bookings', (req, res) => {
+app.post('/api/bookings', (req, res) => {
 
     try {
         const { token } = req.cookies;
@@ -328,7 +328,7 @@ app.post('/bookings', (req, res) => {
 
 });
 
-app.get('/bookings', async (req, res) => {
+app.get('/api/bookings', async (req, res) => {
 
     try {
         const { token } = req.cookies;
@@ -349,7 +349,7 @@ app.get('/bookings', async (req, res) => {
 
 
 const Image = require("./models/Images");
-app.post('/devupload', async (req, res) => {
+app.post('/api/devupload', async (req, res) => {
     // const imageData = req.body.myFile;
     const imageDatas = req.body.myFile;
     // console.log(imageDatas);
