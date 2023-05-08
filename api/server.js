@@ -369,6 +369,10 @@ app.post('/api/devupload', async (req, res) => {
 
 });
 
+app.get('/api/dev', async (req, res) => {
+res.json({ message: "OK"});
+})
+
 
 
 app.listen(4000);
